@@ -1,7 +1,6 @@
 {
   "name": "linkerator",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -32,5 +31,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evonsanders8/The-Great-Linkerator-Solution.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evonsanders8/The-Great-Linkerator-Solution/issues"
+  },
+  "homepage": "https://github.com/evonsanders8/The-Great-Linkerator-Solution#readme",
+  "description": ""
 }
