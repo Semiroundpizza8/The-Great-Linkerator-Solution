@@ -1,14 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-
-const App = () => {
-  return <h1>YEET MAN</h1>;
-};
+import App from "./components/App";
 
 ReactDOM.render(
   <Router>
     <App />
-  </Router>,
+    </Router>,
   document.getElementById("app")
 );

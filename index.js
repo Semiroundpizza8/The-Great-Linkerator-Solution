@@ -8,10 +8,20 @@ const FORCE = process.env.FORCE || false;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "build")));
+console.log(__dirname);
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+// ["create"].forEach((route) => {
+//   app.get(`/${route}`, (req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   });
+// });
+
+app.use(express.json())
 
 app.get("/", (req, res) => {
-  res.send("yeet");
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const startServer = new Promise((resolve) => {
