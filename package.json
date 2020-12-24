@@ -4,9 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start:dev": "nodemon index.js & npm run build:dev",
-    "build": "react-scripts build",
-    "build:dev": "node watcher.js"
+    "start:dev": "nodemon index.js & npm run build",
+    "build": "parcel src/index.html"
   },
   "keywords": [],
   "author": "",
