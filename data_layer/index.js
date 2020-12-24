@@ -28,26 +28,26 @@ async function getAllLinks() {
 }
 }
 
-async function createInitialLink() {
-  try {
-    console.log("starting to create links!");
-    await createLink({
-      newLink: "www.google.com",
-      comment: "This is the best search engine around",
-      clickCount: 1
-    })
+// async function createInitialLink() {
+//   try {
+//     console.log("starting to create links!");
+//     await createLink({
+//       newLink: "www.google.com",
+//       comment: "This is the best search engine around",
+//       clickCount: 1
+//     })
 
-    await createLink({
-      newLink: "www.imgur.com",
-      comment: "Love memes? This is meme heaven.",
-      clickCount: 1
-    })
+//     await createLink({
+//       newLink: "www.imgur.com",
+//       comment: "Love memes? This is meme heaven.",
+//       clickCount: 1
+//     })
 
-    console.log("Finished creating links!");
-  } catch(error) {
-    throw error;
-  }
-}
+//     console.log("Finished creating links!");
+//   } catch(error) {
+//     throw error;
+//   }
+// }
 
 async function getLinkById(linkId) {
   //if we introduce tags, then we'll need to also pull those over so they can be updated
@@ -99,7 +99,7 @@ module.exports = {
   sync,
   getAllLinks,
   createLink,
-  createInitialLink,
+  //createInitialLink,
   updateLink,
   getLinkById,
 };
