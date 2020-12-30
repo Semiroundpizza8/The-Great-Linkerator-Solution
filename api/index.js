@@ -12,8 +12,8 @@ const {
 
 const apiRouter = require("express").Router();
 
-apiRouter.get('/', (req, res, next) => {
-    res.send({message: 'Welcome to The Great Linkerator'})
+apiRouter.get("/", async (req, res, next) => {
+  res.send("Welcome to The Great Linkerator!")
 })
 
 apiRouter.get("/links", async (req, res, next) => {

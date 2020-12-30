@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { 
-  BrowserRouter as Router,
-  Switch,
-  Route
- } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, useHistory, Switch, Redirect } from "react-router-dom";
 import fetchAPI from './api';
-
+import CreateLinkForm from "./components/CreateLinkForm"
 import {
   SearchBar,
   Links
 } from './components';
+
 
 
 
@@ -20,7 +17,13 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [searchOption, setSearchOption] = useState('')
 
-useEffect(async () => {
+  function addNewLink(newLink) {
+    setLinkList([...linkList, newLink]);
+  }
+  
+  let history = useHistory();
+
+  useEffect(async () => {
     fetchAPI('http://localhost:3001/api/links')
       .then((resp) => {
         console.log(resp)
@@ -28,8 +31,8 @@ useEffect(async () => {
       })
       .catch(console.error);
 }, [])
-
-useEffect(() => {
+  
+  useEffect(() => {
   fetchAPI('http://localhost:3001/api/tags')
     .then((data) => {
       console.log(data)
@@ -37,37 +40,38 @@ useEffect(() => {
     })
     .catch(console.error)
 }, [])
-
-function filteredLinks() {
-  if (searchOption === 'Tags') {
+ 
+  function filteredLinks() {
     return linkList.filter((_link) => {
-      return  _link.tags.find(tag => {
-        tag.tag === search;
-      })
-    })
-  } else {
-        return linkList.filter((_link) => {
-          return _link.link.toLowerCase().includes(search.toLowerCase());
-        })
-        } 
-}
-      
-
-
-  return <Switch>
-    <Route path='/'>
-      <h1>The Great Linkerator</h1>
-      <SearchBar 
-        search={search}
-        setSearch={setSearch}
-        setSearchOption={setSearchOption}
-        searchOption={searchOption}/>
-      <Links 
-        linkList={filteredLinks()}
-        tagList={tagList}/>
-    </Route>
+      return _link.link.includes(search.toLowerCase());
+    });
+  }
+  
+  return <>
+  <h1>The Great Linkerator</h1>
+  <Switch>
+    <Route path="/searchBar" render={()=> <SearchBar />} />
+    <Route path="/createLink" render={()=><CreateLinkForm linkList={linkList} setLinkList={setLinkList} addNewLink={addNewLink} history={history}/>}/>
+    <Redirect from="*" to="/"  />
   </Switch>
-};
+
+  </>
+
+  
+
+
+//   return <Switch>
+//     <Route path='/'>
+//       <h1>The Great Linkerator</h1>
+//       <SearchBar 
+//         search={search}
+//         setSearch={setSearch}
+//         setSearchOption={setSearchOption}
+//         searchOption={searchOption}/>
+      
+//     </Route>
+//   </Switch>
+// };
 
 ReactDOM.render(
   <Router>
