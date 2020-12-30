@@ -8,7 +8,7 @@ import SearchBar from "./components/SearchBar";
 const App = () => {
   const [linkList, setLinkList] = useState([]);
   const [search, setSearch] = useState('');
-
+  console.log('hello there!')
 // useEffect(async () => {
 //     fetchAPI('http://localhost:3001/api/links')
 //       .then((resp) => {
@@ -30,15 +30,15 @@ function filteredLinks() {
 
     {/* <Redirect from="*" to="/"  /> */}
   </Switch>
-  
+
   </>
 };
 
-function addNewLink(newLink) {
-  setLinkList([...linkList, newLink]);
-}
+// function addNewLink(newLink) {
+//   setLinkList([...linkList, newLink]);
+// }
 
-let history = useHistory();
+//let history = useHistory();
 
 ReactDOM.render(
   <Router>

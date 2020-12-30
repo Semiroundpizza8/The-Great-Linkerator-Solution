@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { fetchAPI } from "./api";
+import { fetchAPI } from "../api";
 
 const BASE_URL= "http://localhost:3001/api";
 
@@ -16,15 +16,16 @@ const CreateLinkForm = (props) => {
   }
 
   return (
+    <div>
     <h1>This is the form</h1>
-    // <form
+    {/*// <form
     //   className="newLinkForm"
     //   onSubmit={async (event) => {
     //     event.preventDefault();
 
     //     const newLinkData = {
     //       link: link,
-    //       comment: comment, 
+    //       comment: comment,
     //       clickCount: 1
     //     }
 
@@ -46,8 +47,9 @@ const CreateLinkForm = (props) => {
     //   <label>Comment</label>
     //   <input type="text" value={comment} onChange={(event) => setComment(event.target.value)}></input>
     //   <button>Submit</button>
-    //   <button onClick={() => {clearForm(); history.pushState("/")}}>Cancel</button> 
-    // </form>
+    //   <button onClick={() => {clearForm(); history.pushState("/")}}>Cancel</button>
+    // </form>*/}
+    </div>
   )
 }
 

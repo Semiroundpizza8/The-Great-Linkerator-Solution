@@ -19,7 +19,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, "build")));
 
 // make a route for each front end page
-["create"].forEach((route) => {  app.get(`/${route}`, (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html"));  });});
+// each time you add a front end route using react router, it needs to be added to this array
+["create", "searchBar", ""].forEach((route) => {  app.get(`/${route}`, (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html"));  });});
 
 const apiRouter = require('./api');
 app.use('/api', apiRouter);
