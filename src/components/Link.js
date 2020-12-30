@@ -1,18 +1,27 @@
 import React from 'react';
 
 // Material U-I imports:
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import TableCell from '@material-ui/core/TableCell';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
-const Link = () => {
+const Link = (props) => {
+  const { url, clickCount, comment, createDate } = props;
+
   return (
-    <List>
-      <ListItem>
-        <ListItemText>I'm a URL.</ListItemText>
-        <LisItemText>Click Count.</LisItemText>
-      </ListItem>
-    </List>
+    <>
+      <TableCell component="th" scope="row">
+        {url}
+      </TableCell>
+      <TableCell>{clickCount}</TableCell>
+      <TableCell>{comment}</TableCell>
+      <TableCell>{createDate}</TableCell>
+      <TableCell>
+        <IconButton>
+          <DeleteIcon />
+        </IconButton>
+      </TableCell>
+    </>
   );
 };
 

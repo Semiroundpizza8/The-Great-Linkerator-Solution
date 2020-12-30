@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from './Link';
 
 // Material-UI Imports:
 import TableContainer from '@material-ui/core/TableContainer';
@@ -38,17 +39,12 @@ const LinkTable = () => {
           {rows.map((row) => {
             return (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.url}
-                </TableCell>
-                <TableCell>{row.clickCount}</TableCell>
-                <TableCell>{row.comment}</TableCell>
-                <TableCell>{row.createDate}</TableCell>
-                <TableCell>
-                  <IconButton>
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
+                <Link
+                  url={row.url}
+                  clickCount={row.clickCount}
+                  comment={row.comment}
+                  createDate={row.createDate}
+                />
               </TableRow>
             );
           })}
