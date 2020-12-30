@@ -29,6 +29,8 @@ const sync = async (force = false) => {
       PRIMARY KEY(link_id, tag_id)
     );
   `);
+
 };
+
 
 module.exports = sync;
