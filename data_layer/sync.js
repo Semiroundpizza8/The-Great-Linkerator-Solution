@@ -7,6 +7,7 @@ const sync = async (force = false) => {
       DROP TABLE IF EXISTS tags;
     `);
   }
+  
 
   await client.query(`
     CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

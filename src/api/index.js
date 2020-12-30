@@ -1,3 +1,4 @@
+
 async function fetchAPI(url, method="GET", sendData=null) {
     const fetchOptions = {
       method: method,
