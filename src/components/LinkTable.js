@@ -12,7 +12,7 @@ import TableBody from '@material-ui/core/TableBody';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const LinkTable = () => {
+const LinkTable = (props) => {
   function createData(url, clickCount, comment, createDate) {
     return { url, clickCount, comment, createDate };
   }
@@ -20,6 +20,7 @@ const LinkTable = () => {
   const rows = [
     createData('google.com', 0, 'all the answers!', '2020-23-12'),
     createData('fullstackacademy.com', 0, 'school!', '2020-23-12'),
+    createData('espn.com', 0, 'stories and scores!', '2020-30-12'),
   ];
 
   return (
