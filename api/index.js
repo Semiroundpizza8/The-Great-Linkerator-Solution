@@ -1,4 +1,14 @@
-const {client, getAllLinks, createLink, updateLink, getLinkById} = require('../data_layer');
+const {
+    client, 
+    getAllLinks, 
+    createLink, 
+    updateLink, 
+    getLinkById, 
+    createTags, 
+    createLinkTag, 
+    getAllTags, 
+    getLinksByTagName
+} = require('../data_layer');
 
 const apiRouter = require("express").Router();
 
@@ -21,6 +31,33 @@ apiRouter.get("/links", async (req, res, next) => {
     }
   });
 
+apiRouter.get('/tags', async (req, res) => {
+  try {
+    const tags = await getAllTags();
+  
+    res.send({
+      "tags": tags
+    });
+    next();
+  } catch(error) {
+    console.log("Error requesting tags");
+    next(error);
+  }
+});
+
+  apiRouter.get('/tags/:tagName/links', async (req, res, next) => {
+    const { tagName } = req.params
+    try {
+      console.log("Requesting link by tag name");
+      const links = getLinksByTagName(tagName);
+
+      res.send({ links });
+    } catch(error) {
+      console.log("Error requesting link by tag name");
+      next(error);
+    }
+  })
+
   apiRouter.post("/links", async (req, res, next) => {
     try {
       const newLink = await createLink(req.body);
@@ -34,12 +71,12 @@ apiRouter.get("/links", async (req, res, next) => {
 
   apiRouter.patch("/links/:id", async (req, res, next) => {
     const { linkId } = req.params; 
-    const { link, comment, clickCount} = req.body;
+    const { link, comment, clickCount, tags} = req.body;
 
     const updateFields = {};
 
     if(link) {
-        updateFields.linkName = link;
+        updateFields.link = link;
     }
 
     if(comment) {
@@ -49,6 +86,10 @@ apiRouter.get("/links", async (req, res, next) => {
     if(clickCount) {
         updateFields.clickCount = clickCount;
     }
+
+    if(tags) {
+      updateFields.tags = tags;
+  }
 
     try {
         const originalLink = getLinkById(linkId);
