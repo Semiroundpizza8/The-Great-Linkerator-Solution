@@ -25,6 +25,7 @@ const LinkTable = (props) => {
   const tableStyling = {
     width: '75vw',
     justifyContent: 'center',
+    border: '1px solid black',
   };
 
   return (
