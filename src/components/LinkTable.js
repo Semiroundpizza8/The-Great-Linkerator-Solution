@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from './Link';
 
 // Material-UI Imports:
@@ -9,10 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-
 const LinkTable = (props) => {
+  const {} = props;
+
   function createData(url, clickCount, comment, createDate) {
     return { url, clickCount, comment, createDate };
   }
@@ -23,17 +22,34 @@ const LinkTable = (props) => {
     createData('espn.com', 0, 'stories and scores!', '2020-30-12'),
   ];
 
+  const tableStyling = {
+    width: '75vw',
+    justifyContent: 'center',
+  };
+
   return (
-    <TableContainer>
+    <TableContainer style={tableStyling}>
       <Table className="LinkList">
         <TableHead>
           <TableRow>
-            <TableCell>URL</TableCell>
-            <TableCell>Click Count</TableCell>
-            <TableCell>Comment</TableCell>
-            {/* <TableCell>Tags</TableCell> */}
-            <TableCell>Created</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell>
+              <h3>URL</h3>
+            </TableCell>
+            <TableCell>
+              <h3>Click Count</h3>
+            </TableCell>
+            <TableCell>
+              <h3>Comment</h3>
+            </TableCell>
+            <TableCell>
+              <h3>Tags</h3>
+            </TableCell>
+            <TableCell>
+              <h3>Created</h3>
+            </TableCell>
+            <TableCell>
+              <h3>Actions</h3>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
